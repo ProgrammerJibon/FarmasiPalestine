@@ -22,7 +22,6 @@ import Toast from "react-native-toast-message";
 import ScreenCheckout from "./ScreenCheckout";
 import ScreenOrders from "./ScreenOrders";
 
-
 let once = true;
 let once2 = true;
 const App = () => {
