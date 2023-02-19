@@ -191,7 +191,8 @@ const ScreenCheckout = (props) => {
                 </View>
                 <View style={{padding: 16, paddingBottom: 16, display: step === 1 ? undefined : 'none'}}>
                     <Text style={{textAlign: 'right', color: "black", marginVertical: 4}}>
-                        BILLING & SHIPPING
+                        {/*BILLING & SHIPPING*/}
+                        {"الفواتير والشحن"}
                     </Text>
                     <TextInput
                         textAlign={'right'}
@@ -375,7 +376,8 @@ const ScreenCheckout = (props) => {
                         value={city+""}
                     />*/}
                     <Text style={{textAlign: 'right', color: "black", marginVertical: 4}}>
-                        Billing Mobile Number
+                        {/*Billing mobile phone number*/}
+                        {"رقم الهاتف المتحرك الخاص بالفواتير"}
                     </Text>
                     <TextInput
                         textAlign={'right'}
@@ -416,7 +418,8 @@ const ScreenCheckout = (props) => {
                 </View>
                 <View style={{padding: 16, paddingBottom: 16, display: step === 2 || step === 3 ? undefined : 'none'}}>
                     <Text style={{textAlign: 'right', color: "black", marginVertical: 4}}>
-                        ORDER REVIEW
+                        {/*ORDER REVIEW*/}
+                        {"مراجعة الطلب"}
                     </Text>
                     <View
                         style={{
@@ -435,10 +438,16 @@ const ScreenCheckout = (props) => {
                             }}
                         >
                             <View>
-                                <Text style={{color: 'black', width: 70, textAlign: 'right'}}>Subtotal</Text>
+                                <Text style={{color: 'black', width: 70, textAlign: 'right'}}>
+                                    {/*Subtotal*/}
+                                    {"المبلغ الاجمالي"}
+                                </Text>
                             </View>
                             <View>
-                                <Text style={{color: 'black'}}>Product</Text>
+                                <Text style={{color: 'black'}}>
+                                    {/*Product*/}
+                                    {"منتجات"}
+                                </Text>
                             </View>
                         </View>
                         <FlatList data={allListRes} renderItem={object => {
@@ -473,7 +482,10 @@ const ScreenCheckout = (props) => {
                                 <Text style={{color: 'black', width: 70, textAlign: 'right'}}>{shippingCharge}.00</Text>
                             </View>
                             <View>
-                                <Text style={{color: 'black'}}>Shipping</Text>
+                                <Text style={{color: 'black'}}>
+                                    {/*Shipping*/}
+                                    {"شحن"}
+                                </Text>
                             </View>
                         </View>
                         <View
@@ -492,7 +504,10 @@ const ScreenCheckout = (props) => {
                                 }}>₪{inTotal}.00</Text>
                             </View>
                             <View>
-                                <Text style={{color: 'black', fontWeight: 'bold'}}>Total</Text>
+                                <Text style={{color: 'black', fontWeight: 'bold'}}>
+                                    {/*Total*/}
+                                    {"المبلغ الإجمالي"}
+                                </Text>
                             </View>
                         </View>
                     </View>
@@ -546,7 +561,8 @@ const ScreenCheckout = (props) => {
                                             Toast.show({
                                                 type: 'success',
                                                 text1: 'Success!',
-                                                text2: 'Order has been successfully placed.',
+                                                //Order has been successfully placed.
+                                                text2: 'تم تقديم الطلب بنجاح.',
                                                 topOffset: 70,
                                             })
                                             props.nav.navigate("Home");
@@ -555,7 +571,8 @@ const ScreenCheckout = (props) => {
                                             Toast.show({
                                                 type: 'error',
                                                 text1: 'Error!',
-                                                text2: 'Invalid or data missing in the required field(s)',
+                                                //Invalid or data missing in the required field(s)
+                                                text2: 'غير صالحة أو بيانات مفقودة في الحقول المطلوبة',
                                                 topOffset: 70,
                                             })
                                         }
@@ -565,7 +582,8 @@ const ScreenCheckout = (props) => {
                                         Toast.show({
                                             type: 'error',
                                             text1: 'Error!',
-                                            text2: 'Invalid or data missing in the required field(s)',
+                                            //Invalid or data missing in the required field(s)
+                                            text2: 'غير صالحة أو بيانات مفقودة في الحقول المطلوبة',
                                             topOffset: 70,
                                         })
                                     })
@@ -579,7 +597,10 @@ const ScreenCheckout = (props) => {
                                 alignSelf: 'center',
                                 padding: 16,
                                 backgroundColor: defines.backDarkPrimary
-                            }}>Place Order</Text>
+                            }}>
+                            {/*Place Order*/}
+                            {"أكد الطلب"}
+                        </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.flex, {
@@ -596,7 +617,8 @@ const ScreenCheckout = (props) => {
                                 Toast.show({
                                     type: 'error',
                                     text1: 'Error!',
-                                    text2: 'Invalid or data missing in the required field(s)',
+                                    //Invalid or data missing in the required field(s)
+                                    text2: 'غير صالحة أو بيانات مفقودة في الحقول المطلوبة',
                                     topOffset: 70,
                                 })
                             }

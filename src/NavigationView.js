@@ -58,61 +58,75 @@ const NavigationView = (props) => {
                         color: defines.backDarkPrimary,
                         padding: 8,
                         textTransform: 'capitalize'
-                    }}>{props.userDisplayName ? props.userDisplayName : "GUEST USER"}</Text>
+                    }}>{props.userDisplayName ? props.userDisplayName : "حساب زائر"}</Text> {/*GUEST USER*/}
                 </View>
             </View>
 
             <ScrollView style={{width: "100%"}}>
                 <View style={{width: defines.drawerWidth}}>
-                    {navItem(require("./assets/icon_home.png"), "Home", e => {
+                    {/*Home*/}
+                    {navItem(require("./assets/icon_home.png"), "", e => {
                         props.navigation.navigate("Home");
                     })}
-                    {props.userDisplayName ? navItem(require("./assets/icon_profile.png"), "Account", e => {
+                    {/*Account*/}
+                    {props.userDisplayName ? navItem(require("./assets/icon_profile.png"), "حساب", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/"});
                     }, e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/wp-admin"});
                     }) : null}
-                    {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "Orders", e => {
+                    {/*Orders*/}
+                    {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "طلبات", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/orders/"});
                         // props.navigation.navigate("ScreenOrders");
                     }, e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/wp-admin"});
                     }) : null}
-                    {navItem(require("./assets/icon_hamburger.png"), "Categories", e => {
+                    {/*Categories*/}
+                    {navItem(require("./assets/icon_hamburger.png"), "فئات", e => {
                         props.navigation.navigate("AllCategories");
                     })}
-                    {navItem(require("./assets/icon_shopping_cart.png"), "WishList", e => {
+                    {/*WishList*/}
+                    {navItem(require("./assets/icon_shopping_cart.png"), "قائمة الرغبات", e => {
                         props.navigation.navigate('ScreenWishlist')
                     })}
-                    {navItem(require("./assets/icon_shopping.png"), "Cart", e => {
+                    {/*Cart*/}
+                    {navItem(require("./assets/icon_shopping.png"), "عربة التسوق", e => {
                         props.navigation.navigate('ScreenCartList')
                     })}
-                    {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "Orders", e => {
+                    {/*Orders*/}
+                    {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "طلبات", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/orders/"});
                     }) : null}
-
-                    {navItem(require("./assets/icon_who_are_we.png"), "Who are we", e => {
+                    {/*Who are we*/}
+                    {navItem(require("./assets/icon_who_are_we.png"), "من نحن", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d9%85%d9%86-%d9%86%d8%ad%d9%86/"});
                     })}
-                    {navItem(require("./assets/icon_about_us.png"), "About Farmasi", e => {
+                    {/*About Farmasi*/}
+                    {navItem(require("./assets/icon_about_us.png"), "حول فارماسي", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b9%d9%86-%d9%81%d8%a7%d8%b1%d8%b3%d9%8a/"});
                     })}
-                    {navItem(require("./assets/icon_company_terms_and_conditions.png"), "Company's policy", e => {
+                    {/*Company's policy*/}
+                    {navItem(require("./assets/icon_company_terms_and_conditions.png"), "سياسة الشركة", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
                     })}
-                    {navItem(require("./assets/icon_company_insurance_policy.png"), "Privacy policy", e => {
+                    {/*Privacy policy*/}
+                    {navItem(require("./assets/icon_company_insurance_policy.png"), "سياسة الخصوصية", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9/"});
                     })}
-                    {navItem(require("./assets/icon_operator.png"), "Call Us", e => {
+                    {/*Call Us*/}
+                    {navItem(require("./assets/icon_operator.png"), "اتصل بنا", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/"});
                     })}
-                    {navItem(require("./assets/icon_terms_conditions.png"), "Terms & Conditions", e => {
+                    {/*Terms & Conditions*/}
+                    {navItem(require("./assets/icon_terms_conditions.png"), "البنود و الظروف", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
                     })}
-                    {navItem(require("./assets/icon_info.png"), "App info", e => {
+                    {/*App info*/}
+                    {navItem(require("./assets/icon_info.png"), "معلومات التطبيق", e => {
                         props.navigation.navigate('loadLink');
                     })}
-                    {props.userDisplayName ? null : navItem(require("./assets/icon_login.png"), "Login", e => {
+                    {/*Login*/}
+                    {props.userDisplayName ? null : navItem(require("./assets/icon_login.png"), "تسجيل الدخول", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/?login=true&back=home&page=1"});
                     }, e => {
                         props.navigation.navigate("WebView", {
@@ -120,7 +134,8 @@ const NavigationView = (props) => {
                             fromCheckout: true
                         });
                     })}
-                    {!props.userDisplayName ? null : navItem(require("./assets/icon_logout.png"), "Logout", e => {
+                    {/*Logout*/}
+                    {!props.userDisplayName ? null : navItem(require("./assets/icon_logout.png"), "تسجيل خروج", e => {
                         RCTNetworking.clearCookies();
                         BackHandler.exitApp();
                     })}

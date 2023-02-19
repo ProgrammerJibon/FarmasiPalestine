@@ -180,7 +180,10 @@ const ScreenWishlist = (props) => {
                                       props.addToList(item.item.id, 'cart', item.item.quantity).then(res => res ? alert("Added to cart!") : alert("Something went wrong!"))
                                   }}
                 >
-                    <Text style={{color: defines.backgroundColor, fontSize: 12}}>Add to Cart</Text>
+                    <Text style={{color: defines.backgroundColor, fontSize: 12}}>
+                        {/*Add to Cart*/}
+                        {"أضف إلى السلة"}
+                    </Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.flex, {
                     justifyContent: 'center',
@@ -194,7 +197,10 @@ const ScreenWishlist = (props) => {
                                       props.deleteFromList(item.item.id);
                                   }}
                 >
-                    <Text style={{color: defines.backDarkPrimary, fontSize: 10}}>Remove wishlist</Text>
+                    <Text style={{color: defines.backDarkPrimary, fontSize: 10}}>
+                        {/*Remove wishlist*/}
+                        {"إزالة قائمة الرغبات"}
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -216,7 +222,9 @@ const ScreenWishlist = (props) => {
                 renderItem={showListsItemsWishlist} key={"5f"}
                 ListHeaderComponent={() => {
                     return <Text
-                        style={{color: 'black', textAlign: 'right', fontSize: 25, fontWeight: 'bold', margin: 16}}>Wishlists
+                        style={{color: 'black', textAlign: 'right', fontSize: 25, fontWeight: 'bold', margin: 16}}>
+                        {/*Wishlists*/}
+                        {"قوائم الامنيات"}
                         ({allListRes.length})</Text>;
                 }}
             />

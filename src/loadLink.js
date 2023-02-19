@@ -48,17 +48,17 @@ const LoadLink = (props) => {
                                 width: window.width - 64,
                                 color: 'gray'
                             },
-                            h1: {fontSize: "32px", margin: 8},
+                            h1: {fontSize: "24px", margin: 8},
                             h2: {
-                                fontSize: "26px",
+                                fontSize: "16px",
                                 margin: 8,
                                 color: defines.backDarkPrimary,
                                 textDecorationLine: 'none'
                             },
-                            h3: {fontSize: "22px", margin: 8},
-                            h4: {fontSize: "20px", margin: 8},
-                            h5: {fontSize: "18px", margin: 8},
-                            h6: {fontSize: "16px", margin: 8},
+                            h3: {fontSize: "14px", margin: 8},
+                            h4: {fontSize: "12px", margin: 8},
+                            h5: {fontSize: "10px", margin: 8},
+                            h6: {fontSize: "8px", margin: 8},
                             div: {margin: 8},
                             a: {color: defines.backLightPrimary,}
                         }}

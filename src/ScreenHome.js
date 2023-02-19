@@ -178,7 +178,10 @@ const ScreenHome = (props) => {
                             nav.navigate("ProductByCategories", {categoryID: item.item.id})
                         }}
                     >
-                        <Text style={{color: "red", marginLeft: 0, fontFamily: 'sans-serif'}}>View All</Text>
+                        <Text style={{color: "red", marginLeft: 0, fontFamily: 'sans-serif'}}>
+                            {/*View All*/}
+                            {"مشاهدة الكل"}
+                        </Text>
                     </TouchableOpacity>
                     <Text style={{
                         color: 'black',
@@ -220,8 +223,10 @@ const ScreenHome = (props) => {
         if (item.item === 'products') {
             return (
                 <View>
-                    <Text style={{color: 'grey', display: 'none', padding: 8, fontSize: 20, textAlign: 'center'}}>Recent
-                        Products</Text>
+                    <Text style={{color: 'grey', display: 'none', padding: 8, fontSize: 20, textAlign: 'center'}}>
+                        {/*Recent Products*/}
+                        {"المنتجات الأخيرة"}
+                    </Text>
                     <FlatList
                         windowSize={1.5}
                         showsHorizontalScrollIndicator={false}
@@ -240,7 +245,10 @@ const ScreenHome = (props) => {
                         textAlign: 'right',
                         fontSize: 18,
                         fontWeight: 'bold'
-                    }}>العروض والخصومات</Text>
+                    }}>
+                        {/*Offers and discounts*/}
+                        {"العروض والخصومات"}
+                    </Text>
                     <FlatList
                         windowSize={1.5}
                         data={thisDiscountProducts} horizontal showsHorizontalScrollIndicator={false}
@@ -253,7 +261,9 @@ const ScreenHome = (props) => {
             return (
                 <View style={{marginTop: 16}}>
                     <Text style={{color: 'grey', display: 'none', padding: 8, fontSize: 20, textAlign: 'center'}}>Categories
-                        You May Like</Text>
+                        {/*You May Like    */}
+                        {"قد يعجبك"}
+                    </Text>
                     <FlatList windowSize={1.5} horizontal={true} data={props.categories} pagingEnabled={false}
                               showsHorizontalScrollIndicator={false}
                               showsVerticalScrollIndicator={false} renderItem={showCategories} key={3}/>

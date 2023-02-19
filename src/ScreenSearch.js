@@ -40,7 +40,8 @@ const ScreenSearch = (props) => {
                 autoFocus={true}
                 cursorColor={defines.backDarkPrimary}
                 placeholderTextColor={'gray'}
-                placeholder={"Enter keyword"}
+                //Enter keyword
+                placeholder={"أدخل الكلمة المفتاحية"}
             />
             <FlatList
                 windowSize={3}
@@ -55,7 +56,7 @@ const ScreenSearch = (props) => {
                 ListHeaderComponent={() => {
                     return <Text
                         style={{color: 'black', textAlign: 'right', fontSize: 25, fontWeight: 'bold', margin: 12}}>{
-                        (thisCatProducts.length > 0 ? "Search result for " + search : (search != "" ? "Nothing found for " + search : "Type to search"))
+                        (thisCatProducts.length > 0 ? " نتيجة البحث عن " + search : (search != "" ? " وجدت شيئا ل " + search : "اكتب للبحث"))
                     }</Text>;
                 }}
             />

@@ -71,8 +71,8 @@ const ScreenCartList = (props) => {
                     }}>₪{item.item.regular_price}.00</Text>
                 </View>
                 <View>
-                    <Text style={{color: 'gray', fontSize: 11}}>Subtotal:
-                        ₪{item.item.price * item.item.quantity}.00</Text>
+                    {/*Subtotal*/}
+                    <Text style={{color: 'gray', fontSize: 11}}>₪{item.item.price * item.item.quantity}.00 : {"المجموع الفرعي"}</Text>
                 </View>
             </View>
             <View style={[{
@@ -183,7 +183,8 @@ const ScreenCartList = (props) => {
                                       props.deleteFromList(item.item.id);
                                   }}
                 >
-                    <Text style={{color: defines.backDarkPrimary, fontSize: 10}}>Remove cart</Text>
+                    {/*Remove cart*/}
+                    <Text style={{color: defines.backDarkPrimary, fontSize: 10}}>إزالة العربة</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -226,14 +227,16 @@ const ScreenCartList = (props) => {
                 showsVerticalScrollIndicator={false}
                 renderItem={showListsItemsCartlist} key={"5f"}
                 ListHeaderComponent={() => {
+                    // Carts
                     return <Text
-                        style={{color: 'black', textAlign: 'right', fontSize: 25, fontWeight: 'bold', margin: 16}}>Carts
+                        style={{color: 'black', textAlign: 'right', fontSize: 25, fontWeight: 'bold', margin: 16}}>عربة التسوق
                         ({allListRes.length})</Text>;
                 }}
             />
             {inTotal > 0 ? (<View style={[styles.flex, {justifyContent: 'space-evenly'}]}>
                 <Text
-                    style={{color: defines.backDarkPrimary, textAlign: 'center', fontSize: 17}}>Total:
+                    // Total
+                    style={{color: defines.backDarkPrimary, textAlign: 'center', fontSize: 17}}>{"في المجموع"}:
                     ₪{inTotal}.00</Text>
                 <TouchableOpacity
                     onPress={proceedToCheckout}
@@ -245,7 +248,7 @@ const ScreenCartList = (props) => {
                         paddingVertical: 8,
                         overflow: 'hidden',
                         borderRadius: 3, fontSize: 17
-                    }}>Proceed to checkout</Text>
+                    }}>{"الشروع في الخروج"}</Text>
                 </TouchableOpacity>
             </View>) : null}
         </View>

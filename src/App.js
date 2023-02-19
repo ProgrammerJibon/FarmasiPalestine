@@ -42,7 +42,7 @@ const App = () => {
     const [userAddresses, setUserAddresses] = useState([]);
     const [userDisplayName, setUserDisplayName] = useState(null);
     const [userID, setUserID] = useState(null);
-    const [userEmail, setUserEmail] = useState("GUEST USER");
+    const [userEmail, setUserEmail] = useState("حساب زائر");//GUEST USER
     // const offsetValue = useRef(new Animated.Value(0)).current;
     // const offsetValueNav = useRef(new Animated.Value(-40)).current;
     // const scaleValue = useRef(new Animated.Value(1)).current;
@@ -260,11 +260,11 @@ const App = () => {
     const realodAll = () => {
         if (netInfo.isInternetReachable) {
             loadDatabase();
+            loadList();
             reloadCategories();
             reloadProducts();
-            loadList();
         } else {
-            alert("Your not connected over internet");
+            alert("أنت غير متصل بالإنترنت");// Your not connected over internet
         }
     }
 

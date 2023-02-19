@@ -113,21 +113,24 @@ const ScreenProductDetails = (props) => {
                             Toast.show({
                                 type: 'success',
                                 text1: 'Wait!',
-                                text2: `Removed from wishlist!`,
+                                //Removed from wishlist!
+                                text2: `تمت إزالته من قائمة الرغبات!`,
                                 topOffset: 70
                             });
                         }) : props.addToList(productID, 'wish', quantityCart).then(res => {
                             Toast.show({
                                 type: 'success',
                                 text1: 'Wait!',
-                                text2: `Added to wishlist!`,
+                                //Added to wishlist!
+                                text2: `أضيف لقائمة الأماني!`,
                                 topOffset: 70
                             });
                         }) : props.addToList(productID, 'wish', quantityCart).then(res => {
                             Toast.show({
                                 type: 'success',
                                 text1: 'Wait!',
-                                text2: `Added to wishlist!`,
+                                //Added to wishlist!
+                                text2: `أضيف لقائمة الأماني!`,
                                 topOffset: 70
                             });
                         })
@@ -219,7 +222,10 @@ const ScreenProductDetails = (props) => {
                                           props.addToList(productID, 'cart', quantityCart).then(res => res ? alert("Added to cart!") : alert("Something went wrong!"))
                                       }}
                     >
-                        <Text style={{color: defines.backgroundColor}}>Add to Cart</Text>
+                        <Text style={{color: defines.backgroundColor}}>
+                            {/*Add to Cart*/}
+                            {"أضف إلى السلة"}
+                        </Text>
                     </TouchableOpacity>
                     <View style={[styles.flex, {
                         width: 'auto',
@@ -334,7 +340,10 @@ const ScreenProductDetails = (props) => {
                     color: defines.backDarkPrimary,
                     fontSize: 15,
                     textAlign: 'right'
-                }}>Related Products</Text>
+                }}>
+                    {/*Related Products*/}
+                    {"منتجات ذات صله"}
+                </Text>
                 <FlatList
                     windowSize={1}
                     nestedScrollEnabled={true}

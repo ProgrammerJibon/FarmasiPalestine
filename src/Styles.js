@@ -162,14 +162,16 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
                                 Toast.show({
                                     type: 'success',
                                     text1: 'Success!',
-                                    text2: `Successfully added to cart!`,
+                                    //Successfully added to cart!
+                                    text2: `تمت الإضافة إلى عربة التسوق بنجاح!`,
                                     topOffset: 70
                                 });
                             } else {
                                 Toast.show({
                                     type: 'error',
                                     text1: 'Error!',
-                                    text2: `Something went wrong!`,
+                                    //Something went wrong!
+                                    text2: `هناك خطأ ما!`,
                                     topOffset: 70
                                 });
                             }
