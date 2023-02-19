@@ -1,10 +1,10 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState, useRef} from 'react';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import ScreenHome from "./ScreenHome";
 import NavigationView from "./NavigationView";
 import {apiBinder, defines, styles, window} from "./Styles";
-import {Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View} from "react-native";
+import {Image, SafeAreaView, StatusBar, Animated, Text, TouchableOpacity, View} from "react-native";
 import * as database from "./database";
 import * as RootNavigation from './RootNavigation';
 import loadJson from "./loadJson";
@@ -244,7 +244,7 @@ const App = () => {
                     setTimeout(e => {
                         once = true
                     }, 3000);
-                    if (res.billing) {
+                    if (res) {
                         setUserAddresses(res);
                     }
                 })
@@ -269,15 +269,21 @@ const App = () => {
     }
 
 
-    const [offsetValue, setOffsetValue] = useState(-40);
+    // const [offsetValue, setOffsetValue] = useState(0);
+    const offsetValue = useRef(new Animated.Value(0)).current;
     const toggleDrawer = () => {
         if (drawerOpened) {
             setDrawerOpened(false);
-            setOffsetValue(-40)
+            // setOffsetValue(0)
         } else {
             setDrawerOpened(true);
-            setOffsetValue(defines.drawerWidth);
+            // setOffsetValue(defines.drawerWidth * -1);
         }
+        Animated.timing(offsetValue, {
+            toValue: drawerOpened ? 0 : defines.drawerWidth * -1,
+            duration: 500,
+            useNativeDriver: true
+        }).start();
         // Animated.timing(offsetValue, {
         //     toValue: drawerOpened ? 0 : defines.drawerWidth - (defines.drawerWidth * (1 - embValue)),
         //     duration: 500,
@@ -326,13 +332,13 @@ const App = () => {
     )*/
     return (
         <SafeAreaView style={{display: mainScreen, flex: 1, position: 'relative', backgroundColor: 'white'}}>
-            <View style={{
+            <Animated.View style={{
                 width: defines.drawerWidth,
                 flex: 1,
                 position: 'absolute',
                 top: 0,
                 bottom: 0,
-                left: defines.drawerWidth * -1,
+                right: defines.drawerWidth * -1,
                 zIndex: 999,
                 transform: [
                     // {translateX: offsetValueNav}
@@ -340,12 +346,12 @@ const App = () => {
                 ]
             }}>
                 {NavDrawer()}
-                <TouchableOpacity style={{position: 'absolute', right: -40, top: 25, opacity: drawerOpened ? 1 : 0}}
+                <TouchableOpacity style={{position: 'absolute', left: -40, top: 25, opacity: drawerOpened ? 1 : 0}}
                                   onPress={toggleDrawer}>
                     <Image source={require('./assets/icon_left_arrow.png')}
-                           style={{tintColor: 'white', width: 32, height: 32}}/>
+                           style={{tintColor: 'white', width: 32, height: 32, transform: [{rotateZ: '180deg'}]}}/>
                 </TouchableOpacity>
-            </View>
+            </Animated.View>
             <View style={[{flex: 1}]}>
                 <NavigationContainer ref={RootNavigation.navigationRef} onStateChange={(state) => {
                     setCurrentScreen(RootNavigation.navigationRef.current.getCurrentRoute().name)
@@ -360,19 +366,6 @@ const App = () => {
                         height: 64,
                         justifyContent: 'space-between'
                     }]}>
-                        <TouchableOpacity onPress={toggleDrawer} style={{padding: 16}}>
-                            <Image
-                                source={drawerOpened ? require('./assets/icon_left_arrow.png') : require('./assets/icon_more.png')}
-                                style={[styles.smallIcon, {tintColor: defines.backgroundColor}]}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => RootNavigation.navigate('Home')} style={{padding: 16}}>
-                            <Image source={require('./assets/logo.png')} style={[{
-                                tintColor: defines.backgroundColor,
-                                width: 200,
-                                height: 25,
-                                margin: 'auto'
-                            }]}/>
-                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => RootNavigation.navigate('ScreenCartList')}
                                           style={{padding: 16, position: 'relative'}}>
                             <Text style={{
@@ -388,6 +381,19 @@ const App = () => {
                             }}>{listDatabase.filter(y => y.type == 'cart').length}</Text>
                             <Image source={require('./assets/icon_bag.png')}
                                    style={[styles.smallIcon, {tintColor: defines.backgroundColor}]}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => RootNavigation.navigate('Home')} style={{padding: 16}}>
+                            <Image source={require('./assets/logo.png')} style={[{
+                                tintColor: defines.backgroundColor,
+                                width: 200,
+                                height: 25,
+                                margin: 'auto'
+                            }]}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={toggleDrawer} style={{padding: 16}}>
+                            <Image
+                                source={drawerOpened ? require('./assets/icon_left_arrow.png') : require('./assets/icon_more.png')}
+                                style={[styles.smallIcon, {tintColor: defines.backgroundColor}]}/>
                         </TouchableOpacity>
                     </View>
                     <Stack.Navigator

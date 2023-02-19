@@ -99,18 +99,16 @@ const ScreenCheckout = (props) => {
         },
     ]
     const billing = props.userAddresses.billing;
-    console.log(billing)
-    const [first_name, setFirst_name] = useState(billing ? billing.first_name : "");
-    const [last_name, setLast_name] = useState(billing ? billing.last_name : "");
-    const [streetName, setStreetName] = useState(billing ? billing.address_1 : "");
-    const [state, setState] = useState(billing ? billing.state : "");
-    const [city, setCity] = useState(billing ? billing.city : "");
-    const [phone, setPhone] = useState(billing ? billing.phone : "");
+    const [first_name, setFirst_name] = useState(billing.first_name ? billing.first_name : "");
+    const [last_name, setLast_name] = useState(billing.last_name ? billing.last_name : "");
+    const [streetName, setStreetName] = useState(billing.address_1 ? billing.address_1 : "");
+    const [state, setState] = useState(billing.state ? billing.state : "PS01");
+    const [city, setCity] = useState(billing.city ? billing.city : 'الجفتلك');
+    const [phone, setPhone] = useState(billing.phone ? billing.phone : "");
     const [step, setStep] = useState(1);
     const [shippingCharge, setShippingCharge] = useState(15);
 
     let billingstatesfilter = billing_states.filter(value => value.id == state);
-    // console.log(state, billingstatesfilter);
     const [billing_cities, setBilling_cities] = useState(billingstatesfilter[0].states);
 
 

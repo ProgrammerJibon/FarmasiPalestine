@@ -1,7 +1,7 @@
 import React from 'react';
 import {BackHandler, Image, Linking, ScrollView, Text, TouchableHighlight, TouchableOpacity, View} from "react-native";
 import {Gravatar} from 'react-native-gravatar';
-
+import Toast from "react-native-toast-message";
 const RCTNetworking = require('react-native/Libraries/Network/RCTNetworking')
 
 
@@ -58,28 +58,24 @@ const NavigationView = (props) => {
                         color: defines.backDarkPrimary,
                         padding: 8,
                         textTransform: 'capitalize'
-                    }}>{props.userDisplayName ? props.userDisplayName : "حساب زائر"}</Text> {/*GUEST USER*/}
+                    }}>{/*GUEST USER*/}{props.userDisplayName ? props.userDisplayName : "حساب زائر"}</Text>
                 </View>
             </View>
 
             <ScrollView style={{width: "100%"}}>
                 <View style={{width: defines.drawerWidth}}>
                     {/*Home*/}
-                    {navItem(require("./assets/icon_home.png"), "", e => {
+                    {navItem(require("./assets/icon_home.png"), "رئيسي", e => {
                         props.navigation.navigate("Home");
                     })}
                     {/*Account*/}
                     {props.userDisplayName ? navItem(require("./assets/icon_profile.png"), "حساب", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/"});
-                    }, e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/wp-admin"});
                     }) : null}
                     {/*Orders*/}
                     {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "طلبات", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/orders/"});
                         // props.navigation.navigate("ScreenOrders");
-                    }, e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/wp-admin"});
                     }) : null}
                     {/*Categories*/}
                     {navItem(require("./assets/icon_hamburger.png"), "فئات", e => {
@@ -136,8 +132,16 @@ const NavigationView = (props) => {
                     })}
                     {/*Logout*/}
                     {!props.userDisplayName ? null : navItem(require("./assets/icon_logout.png"), "تسجيل خروج", e => {
-                        RCTNetworking.clearCookies();
-                        BackHandler.exitApp();
+                        Toast.show({
+                            type: 'error',
+                            text1: 'Logging out!',
+                            text2: "App will exit shortly...",
+                            topOffset: 70,
+                        })
+                        setTimeout(e=>{
+                            RCTNetworking.clearCookies();
+                            BackHandler.exitApp();
+                        }, 3000)
                     })}
                     <TouchableHighlight onPress={event => {
                         Linking.openURL("https://g.dev/programmerjibon");

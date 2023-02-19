@@ -236,7 +236,7 @@ const ScreenCartList = (props) => {
             {inTotal > 0 ? (<View style={[styles.flex, {justifyContent: 'space-evenly'}]}>
                 <Text
                     // Total
-                    style={{color: defines.backDarkPrimary, textAlign: 'center', fontSize: 17}}>{"في المجموع"}:
+                    style={{color: defines.backDarkPrimary, textAlign: 'center', fontSize: 17}}>{"المجموع"}:
                     ₪{inTotal}.00</Text>
                 <TouchableOpacity
                     onPress={proceedToCheckout}
@@ -248,7 +248,7 @@ const ScreenCartList = (props) => {
                         paddingVertical: 8,
                         overflow: 'hidden',
                         borderRadius: 3, fontSize: 17
-                    }}>{"الشروع في الخروج"}</Text>
+                    }}>{"تاكيد الطلب"}</Text>
                 </TouchableOpacity>
             </View>) : null}
         </View>
