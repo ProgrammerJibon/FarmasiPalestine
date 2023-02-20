@@ -199,7 +199,7 @@ const ScreenWishlist = (props) => {
                 >
                     <Text style={{color: defines.backDarkPrimary, fontSize: 10}}>
                         {/*Remove wishlist*/}
-                        {"إزالة قائمة الرغبات"}
+                        {"حذف المنتج"}
                     </Text>
                 </TouchableOpacity>
             </View>

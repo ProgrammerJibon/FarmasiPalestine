@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "io.jibon.app.farmasi"
+    namespace "com.ambitious.farmasipalestine"
     defaultConfig {
-        applicationId "io.jibon.app.farmasi"
+        applicationId "com.ambitious.farmasipalestine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 50

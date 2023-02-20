@@ -44,7 +44,6 @@ const BrowserWebView = (props) => {
         return true;
     }
     const funReSync = e => {
-        console.log("hello")
         setLoading(true)
         if (params.fromCheckout) {
             props.syncUser().then(id => {
@@ -97,12 +96,16 @@ const BrowserWebView = (props) => {
             <WebView
                 ref={setWebView}
                 onNavigationStateChange={(e) => {
+                    console.log(e.url)
                     if (e.url == "https://michaelq53.sg-host.com/") {
                         if (params.fromCheckout) {
                             props.navigation.navigate("ScreenCartList");
                         } else {
                             props.navigation.navigate("Home");
                         }
+                    }
+                    if (params.fromCheckout){
+                        setLoading(false);
                     }
                     setWebViewCanGoBack(e.canGoBack);
                 }}

@@ -15,7 +15,7 @@ const ScreenCheckout = (props) => {
 
     if (!userID) {
         props.nav.navigate("WebView", {
-            url: "https://michaelq53.sg-host.com/?login=true&back=home&page=1",
+            url: "https://michaelq53.sg-host.com/?login=true&back=home&page="+Date.now(),
             fromCheckout: true
         });
         return null;
@@ -99,7 +99,10 @@ const ScreenCheckout = (props) => {
         },
     ]
     const billing = props.userAddresses.billing;
-    const [first_name, setFirst_name] = useState(billing.first_name ? billing.first_name : "");
+    if (!billing){
+        return null;
+    }
+    const [first_name, setFirst_name] = useState(billing.first_name? billing.first_name : "");
     const [last_name, setLast_name] = useState(billing.last_name ? billing.last_name : "");
     const [streetName, setStreetName] = useState(billing.address_1 ? billing.address_1 : "");
     const [state, setState] = useState(billing.state ? billing.state : "PS01");
@@ -499,7 +502,7 @@ const ScreenCheckout = (props) => {
                                     fontWeight: 'bold',
                                     width: 70,
                                     textAlign: 'right'
-                                }}>₪{inTotal}.00</Text>
+                                }}>₪{inTotal + shippingCharge}.00</Text>
                             </View>
                             <View>
                                 <Text style={{color: 'black', fontWeight: 'bold'}}>
@@ -553,16 +556,49 @@ const ScreenCheckout = (props) => {
                                 WooCommerce.post("orders", data)
                                     .then((response) => {
                                         if (response.id) {
+                                            const dataxxx = {
+                                                billing: {
+                                                    first_name: first_name,
+                                                    last_name: last_name,
+                                                    address_1: streetName,
+                                                    address_2: "",
+                                                    city: city,
+                                                    state: state,
+                                                    postcode: "",
+                                                    country: "PS",
+                                                    phone: phone
+                                                },
+                                                shipping: {
+                                                    first_name: first_name,
+                                                    last_name: last_name,
+                                                    address_1: streetName,
+                                                    address_2: "",
+                                                    city: city,
+                                                    state: state,
+                                                    postcode: "",
+                                                    country: "PS",
+                                                    phone: phone
+                                                }
+                                            };
+
+                                            WooCommerce.put("customers/"+userID, dataxxx)
+                                                .then((response) => {
+                                                    console.log("errorns",response);
+                                                })
+                                                .catch((error) => {
+                                                    console.log(error.response.data);
+                                                });
+
                                             allListRes.forEach(item => {
                                                 props.deleteFromList(item.id)
                                             });
                                             Toast.show({
                                                 type: 'success',
-                                                text1: 'Success!',
                                                 //Order has been successfully placed.
                                                 text2: 'تم تقديم الطلب بنجاح.',
                                                 topOffset: 70,
-                                            })
+                                            });
+
                                             props.nav.navigate("Home");
                                         } else {
                                             setStep(2);

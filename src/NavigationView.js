@@ -65,7 +65,7 @@ const NavigationView = (props) => {
             <ScrollView style={{width: "100%"}}>
                 <View style={{width: defines.drawerWidth}}>
                     {/*Home*/}
-                    {navItem(require("./assets/icon_home.png"), "رئيسي", e => {
+                    {navItem(require("./assets/icon_home.png"), "الرئيسية", e => {
                         props.navigation.navigate("Home");
                     })}
                     {/*Account*/}
@@ -78,7 +78,7 @@ const NavigationView = (props) => {
                         // props.navigation.navigate("ScreenOrders");
                     }) : null}
                     {/*Categories*/}
-                    {navItem(require("./assets/icon_hamburger.png"), "فئات", e => {
+                    {navItem(require("./assets/icon_hamburger.png"), "الاصناف", e => {
                         props.navigation.navigate("AllCategories");
                     })}
                     {/*WishList*/}
@@ -114,16 +114,16 @@ const NavigationView = (props) => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/"});
                     })}
                     {/*Terms & Conditions*/}
-                    {navItem(require("./assets/icon_terms_conditions.png"), "البنود و الظروف", e => {
+                    {/*navItem(require("./assets/icon_terms_conditions.png"), "البنود و الظروف", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
-                    })}
+                    })*/}
                     {/*App info*/}
-                    {navItem(require("./assets/icon_info.png"), "معلومات التطبيق", e => {
+                    {/*navItem(require("./assets/icon_info.png"), "معلومات التطبيق", e => {
                         props.navigation.navigate('loadLink');
-                    })}
+                    })*/}
                     {/*Login*/}
                     {props.userDisplayName ? null : navItem(require("./assets/icon_login.png"), "تسجيل الدخول", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/?login=true&back=home&page=1"});
+                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/?login=true&back=home&page="+Date.now()});
                     }, e => {
                         props.navigation.navigate("WebView", {
                             url: "https://michaelq53.sg-host.com/wp-admin",
@@ -143,12 +143,12 @@ const NavigationView = (props) => {
                             BackHandler.exitApp();
                         }, 3000)
                     })}
-                    <TouchableHighlight onPress={event => {
+                    {/*<TouchableHighlight onPress={event => {
                         Linking.openURL("https://g.dev/programmerjibon");
                     }}>
                         <Text style={{color: 'gray', fontSize: 10, textAlign: 'center', padding: 16}}>Developed by <Text
                             style={{fontWeight: 'bold'}}>ProgrammerJibon</Text></Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight>*/}
                 </View>
             </ScrollView>
         </View>

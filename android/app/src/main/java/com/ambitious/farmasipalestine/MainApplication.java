@@ -1,4 +1,4 @@
-package io.jibon.app.farmasi;
+package com.ambitious.farmasipalestine;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

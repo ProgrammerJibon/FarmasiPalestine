@@ -5,7 +5,7 @@ import RenderHTML from "react-native-render-html";
 const LoadLink = (props) => {
     /*
     * @author MD. Jibon Howlader
-    * @app version: 2.0
+    * @farmasipalestine version: 2.0
     * */
     const styles = props.styles;
     const defines = props.defines;

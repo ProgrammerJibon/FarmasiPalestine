@@ -112,7 +112,6 @@ const ScreenProductDetails = (props) => {
                         thisOnList.length > 0 ? thisOnList[0].type === "wish" ? props.deleteFromList(thisOnList[0].id).then(res => {
                             Toast.show({
                                 type: 'success',
-                                text1: 'Wait!',
                                 //Removed from wishlist!
                                 text2: `تمت إزالته من قائمة الرغبات!`,
                                 topOffset: 70
@@ -120,7 +119,6 @@ const ScreenProductDetails = (props) => {
                         }) : props.addToList(productID, 'wish', quantityCart).then(res => {
                             Toast.show({
                                 type: 'success',
-                                text1: 'Wait!',
                                 //Added to wishlist!
                                 text2: `أضيف لقائمة الأماني!`,
                                 topOffset: 70
@@ -128,7 +126,6 @@ const ScreenProductDetails = (props) => {
                         }) : props.addToList(productID, 'wish', quantityCart).then(res => {
                             Toast.show({
                                 type: 'success',
-                                text1: 'Wait!',
                                 //Added to wishlist!
                                 text2: `أضيف لقائمة الأماني!`,
                                 topOffset: 70
@@ -219,7 +216,13 @@ const ScreenProductDetails = (props) => {
                         backgroundColor: defines.backDarkPrimary
                     }]}
                                       onPress={e => {
-                                          props.addToList(productID, 'cart', quantityCart).then(res => res ? alert("Added to cart!") : alert("Something went wrong!"))
+                                          props.addToList(productID, 'cart', quantityCart).then(res => res ? (
+                                              Toast.show({
+                                                  type: 'success',
+                                                  text2: "تم الاضافة الى السلة!",
+                                                  topOffset: 70
+                                              })
+                                          ) : alert("Something went wrong!"))
                                       }}
                     >
                         <Text style={{color: defines.backgroundColor}}>

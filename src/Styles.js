@@ -151,9 +151,8 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
                 onPress={() => {
                     if (thisOnList.length > 0) {
                         Toast.show({
-                            type: 'info',
-                            text1: 'Sorry!',
-                            text2: `Already added to cart!`,
+                            type: 'error',
+                            text2: `أضيف بالفعل إلى عربة التسوق!`,
                             topOffset: 70
                         });
                     } else {
@@ -161,7 +160,6 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
                             if (result) {
                                 Toast.show({
                                     type: 'success',
-                                    text1: 'Success!',
                                     //Successfully added to cart!
                                     text2: `تمت الإضافة إلى عربة التسوق بنجاح!`,
                                     topOffset: 70
