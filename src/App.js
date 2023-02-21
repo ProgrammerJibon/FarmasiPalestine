@@ -58,6 +58,7 @@ const App = () => {
                 if (result) {
                     if (result.data) {
                         if (result.data.display_name) {
+
                             console.log(result.data);
                             setUserDisplayName(result.data.display_name);
                         } else {
