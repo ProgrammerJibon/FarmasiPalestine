@@ -39,7 +39,7 @@ const App = () => {
     const [productsFromDatabaseLoaded, setProductsFromDatabaseLoaded] = useState(false);
     const [categoriesFromDatabase, setCategoriesFromDatabase] = useState([]);
     const [categoriesFromDatabaseLoaded, setCategoriesFromDatabaseLoaded] = useState(false);
-    const [userAddresses, setUserAddresses] = useState([]);
+    const [userAddresses, setUserAddresses] = useState(null);
     const [userDisplayName, setUserDisplayName] = useState(null);
     const [userID, setUserID] = useState(null);
     const [userEmail, setUserEmail] = useState("حساب زائر");//GUEST USER
@@ -58,11 +58,14 @@ const App = () => {
                 if (result) {
                     if (result.data) {
                         if (result.data.display_name) {
-
-                            console.log(result.data);
                             setUserDisplayName(result.data.display_name);
                         } else {
                             setUserDisplayName(null);
+                            if (userAddresses){
+                                if (userAddresses.first_name){
+                                    setUserDisplayName(userAddresses.first_name);
+                                }
+                            }
                         }
                         if (result.data.user_email) {
                             setUserEmail(result.data.user_email);

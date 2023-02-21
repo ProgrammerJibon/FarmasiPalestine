@@ -138,7 +138,7 @@ const ScreenProductDetails = (props) => {
                         style={{
                             width: 30,
                             height: 30,
-                            tintColor: thisOnList.length > 0 ? thisOnList[0].type === "wish" ? defines.backDarkPrimary : 'black' : 'gray'
+                            tintColor: thisOnList.length > 0 ? thisOnList[0].type === "wish" ? defines.backDarkPrimary : '#d5d5d5' : 'gray'
                         }}
                     />
                 </TouchableOpacity>

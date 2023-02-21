@@ -44,22 +44,33 @@ const BrowserWebView = (props) => {
         return true;
     }
     const funReSync = e => {
+        let im = Date.now();
         setLoading(true)
+        console.log(im, 1)
         if (params.fromCheckout) {
+            console.log(im, 2)
             props.syncUser().then(id => {
+                console.log(im, 3)
                 if (id) {
+                    console.log(im, 4)
                     setChanginView(true);
                     loadJson(apiBinder("wp-json/wc/v3/customers/" + id)).then(res => {
+                        console.log(im, 5)
                         if (res) {
                             setLoading(true);
                             props.setAddresses(res);
-                            props.navigation.navigate("ScreenCartList");
+                            props.navigation.navigate("CheckoutScreen");
                         } else {
                             setLoading(false)
                         }
                     })
                 } else {
-                    setLoading(false)
+                    console.log(im, 6)
+                    if (changinView){
+                        props.navigation.navigate("ScreenCartList");
+                    }else{
+                        setLoading(false)
+                    }
                 }
             })
         }
@@ -98,6 +109,7 @@ const BrowserWebView = (props) => {
                 onNavigationStateChange={(e) => {
                     console.log(e.url)
                     if (e.url == "https://michaelq53.sg-host.com/") {
+                        setChanginView(true);
                         if (params.fromCheckout) {
                             // props.navigation.navigate("ScreenCartList");
                         } else {

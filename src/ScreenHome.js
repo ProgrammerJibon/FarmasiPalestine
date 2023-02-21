@@ -180,7 +180,7 @@ const ScreenHome = (props) => {
                     >
                         <Text style={{color: "red", marginLeft: 0, fontFamily: 'sans-serif'}}>
                             {/*View All*/}
-                            {"مشاهدة الكل"}
+                            {"للمزيد"}
                         </Text>
                     </TouchableOpacity>
                     <Text style={{
