@@ -99,7 +99,7 @@ const BrowserWebView = (props) => {
                     console.log(e.url)
                     if (e.url == "https://michaelq53.sg-host.com/") {
                         if (params.fromCheckout) {
-                            props.navigation.navigate("ScreenCartList");
+                            // props.navigation.navigate("ScreenCartList");
                         } else {
                             props.navigation.navigate("Home");
                         }
