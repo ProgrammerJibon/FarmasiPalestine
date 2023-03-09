@@ -1,5 +1,6 @@
 const loadJson = (url, data) => {
     // TODO loadJson(url, data).then(result=>{console.log(result)})
+    console.log(url, data);
     return new Promise(function (resolve, reject) {
         const http = new XMLHttpRequest();
         const formData = new FormData();
@@ -19,10 +20,11 @@ const loadJson = (url, data) => {
             console.log(e);
         }
         http.onload = () => {
+            console.log(http.responseText)
             resolve(JSON.parse(http.responseText));
         }
         http.onerror = (e) => {
-            reject(e);
+            reject(url, data, "\nLoad Error\n",e);
         }
     });
 }

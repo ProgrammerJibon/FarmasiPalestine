@@ -29,7 +29,7 @@ const App = () => {
     const [currentScreen, setCurrentScreen] = useState('Home');
     const [drawerOpened, setDrawerOpened] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
-    const [mainScreen, setMainScreen] = useState('none');
+    const [mainScreen, setMainScreen] = useState("none");
     const [listDatabaseExists, setListDatabaseExists] = useState(false);
     const [listDatabase, setListDatabase] = useState([]);
     const [listDatabaseLoaded, setListDatabaseLoaded] = useState(false);
@@ -387,7 +387,7 @@ const App = () => {
                             <Image source={require('./assets/icon_bag.png')}
                                    style={[styles.smallIcon, {tintColor: defines.backgroundColor}]}/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => RootNavigation.navigate('Home')} style={{padding: 16}}>
+                        <TouchableOpacity onPress={() => RootNavigation.navigate('Home')} style={{padding: 16}} onLongPress={e=>{RootNavigation.navigate("loadLink")}}>
                             <Image source={require('./assets/logo.png')} style={[{
                                 tintColor: defines.backgroundColor,
                                 width: 200,

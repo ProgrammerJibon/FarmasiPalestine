@@ -245,6 +245,7 @@ const ScreenProductDetails = (props) => {
                         <TouchableOpacity
                             onPress={() => {
                                 setQuantityCart(prevCartNum => {
+                                    prevCartNum = Number.parseInt(prevCartNum);
                                     return prevCartNum + 1;
                                 })
                             }}
@@ -284,6 +285,7 @@ const ScreenProductDetails = (props) => {
                         <TouchableOpacity
                             onPress={() => {
                                 setQuantityCart(prevCartNum => {
+                                    prevCartNum = Number.parseInt(prevCartNum);
                                     if (prevCartNum <= 1) {
                                         return 1;
                                     }

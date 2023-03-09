@@ -118,9 +118,9 @@ const NavigationView = (props) => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
                     })*/}
                     {/*App info*/}
-                    {navItem(require("./assets/icon_info.png"), "معلومات التطبيق", e => {
+                    {/*navItem(require("./assets/icon_info.png"), "معلومات التطبيق", e => {
                         props.navigation.navigate('loadLink');
-                    })}
+                    })*/}
                     {/*Login*/}
                     {props.userDisplayName ? null : navItem(require("./assets/icon_login.png"), "تسجيل الدخول", e => {
                         props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/?login=true&back=home&page="+Date.now()});

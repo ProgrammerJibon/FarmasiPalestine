@@ -98,8 +98,8 @@ android {
         applicationId "com.ambitious.farmasipalestine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 50
-        versionName "2.0"
+        versionCode 51
+        versionName "2.1"
     }
 
     splits {
@@ -112,10 +112,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            storeFile file('farmasi.jks')
+            storePassword 'farmasi123'
+            keyAlias 'farmasi123'
+            keyPassword 'farmasi123'
         }
     }
     buildTypes {

@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView} from "react-native";
 import RenderHTML from "react-native-render-html";
+import DeviceInfo from 'react-native-device-info';
 
 const LoadLink = (props) => {
     /*
@@ -15,7 +16,7 @@ const LoadLink = (props) => {
         <br>
         <h2>About</h2>
         <h4>App name: Farmasi Palestine</h4>
-        <h4>App version: 2.0</h4>
+        <h4>App version: ${DeviceInfo.getVersion()}</h4>
         <h4>Compatibility: Android/iOS</h4>
         <h3>Offered by: Ibdaa Co.</h3>
         <h5>Email: <a href="mailto:ibdaaps21@gmail.com">ibdaaps21@gmail.com</a></h5>
