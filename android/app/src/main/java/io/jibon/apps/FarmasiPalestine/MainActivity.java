@@ -1,4 +1,4 @@
-package com.ambitious.farmasipalestine;
+package io.jibon.apps.FarmasiPalestine;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

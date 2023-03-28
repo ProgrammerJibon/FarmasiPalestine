@@ -91,7 +91,7 @@ const ScreenHome = (props) => {
     // }
     const WelcomeViewX = () => {
         return false;
-        return (
+        /*return (
             <View style={{backgroundColor: '#f8f8f8'}}>
                 <View style={[styles.flex, styles.welcomeScreenView]}>
                     <Text style={[styles.welcomeScreenText]}>Delivery service available</Text>
@@ -107,7 +107,7 @@ const ScreenHome = (props) => {
                     <Image style={[styles.welcomeScreenImage]} source={require('./assets/sample_image_3.jpg')}/>
                 </View>
             </View>
-        )
+        )*/
     }
 
     const showCategories = (item) => {
@@ -178,7 +178,7 @@ const ScreenHome = (props) => {
                             nav.navigate("ProductByCategories", {categoryID: item.item.id})
                         }}
                     >
-                        <Text style={{color: "red", marginLeft: 0, fontFamily: 'sans-serif'}}>
+                        <Text style={{color: "red", marginLeft: 0}}>
                             {/*View All*/}
                             {"للمزيد"}
                         </Text>

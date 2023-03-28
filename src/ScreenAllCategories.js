@@ -12,7 +12,7 @@ const ScreenAllCategories = (props) => {
             count: 1,
             description: "عرض الكل",
             id: -1,
-            image_src: "https://michaelq53.sg-host.com/wp-content/uploads/2022/08/all-1.png",
+            image_src: "https://farmasiapp.com/wp-content/uploads/2022/08/all-1.png",
             name: "عرض الكل",
             parent_id: 0
         })

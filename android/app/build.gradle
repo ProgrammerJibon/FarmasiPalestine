@@ -93,13 +93,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.ambitious.farmasipalestine"
+    namespace "io.jibon.apps.FarmasiPalestine"
     defaultConfig {
-        applicationId "com.ambitious.farmasipalestine"
+        applicationId "io.jibon.apps.FarmasiPalestine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 51
-        versionName "2.1"
+        versionCode 60
+        versionName "2.0.9"
     }
 
     splits {

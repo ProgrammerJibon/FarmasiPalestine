@@ -5,9 +5,9 @@ import Toast from "react-native-toast-message";
 
 
 const window = Dimensions.get('window');
-//https://michaelq53.sg-host.com/wp-json/wc/v3/products?per_page=100&lang=en&consumer_key=ck_fca0b5560e3e43f7446a4f0925b17b9ce849796e&consumer_secret=cs_51b23a671cd0cba5c66e47ea81caae285262d512
+//https://farmasiapp.com/wp-json/wc/v3/products?per_page=100&lang=en&consumer_key=ck_fca0b5560e3e43f7446a4f0925b17b9ce849796e&consumer_secret=cs_51b23a671cd0cba5c66e47ea81caae285262d512
 //https://farmasi.ps/wp-json/wc/v3/products?per_page=100&lang=en&consumer_key=ck_a4f28b66cf8d0649a042bbdac69ce714bf2f0aaf&consumer_secret=cs_ddf7e431906f27526effa838d6d9e81c06c68800
-// https://michaelq53.sg-host.com/wp-json/wc/v3/customers/4
+// https://farmasiapp.com/wp-json/wc/v3/customers/4
 // /wp-json/wc/v3/orders/?customer=4
 const defines = {
     screenWidth: window.width,
@@ -16,7 +16,7 @@ const defines = {
     drawerWidth: 300,
     backLightPrimary: '#fe5d67',
     backDarkPrimary: "#ff004d",
-    site: "https://michaelq53.sg-host.com/",
+    site: "https://farmasiapp.com/",
     keys2: "consumer_key=ck_a4f28b66cf8d0649a042bbdac69ce714bf2f0aaf&consumer_secret=cs_ddf7e431906f27526effa838d6d9e81c06c68800",
     keys1: "consumer_key=ck_fca0b5560e3e43f7446a4f0925b17b9ce849796e&consumer_secret=cs_51b23a671cd0cba5c66e47ea81caae285262d512",
 }
@@ -91,6 +91,9 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
                 height: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
                 overflow: 'hidden'
             }}
+                   onError={error => {
+                       alert("Loading Image error: "+error.nativeEvent.error);
+                   }}
                    source={{
                        uri: imageSrc
                    }}/>

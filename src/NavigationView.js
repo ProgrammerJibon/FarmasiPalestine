@@ -70,11 +70,11 @@ const NavigationView = (props) => {
                     })}
                     {/*Account*/}
                     {props.userDisplayName ? navItem(require("./assets/icon_profile.png"), "حساب", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/my-account/"});
                     }) : null}
                     {/*Orders*/}
                     {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "طلبات", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/orders/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/my-account/orders/"});
                         // props.navigation.navigate("ScreenOrders");
                     }) : null}
                     {/*Categories*/}
@@ -91,31 +91,31 @@ const NavigationView = (props) => {
                     })}
                     {/*Orders*/}
                     {props.userDisplayName ? navItem(require("./assets/icon_order.png"), "طلبات", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/my-account/orders/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/my-account/orders/"});
                     }) : null}
                     {/*Who are we*/}
                     {navItem(require("./assets/icon_who_are_we.png"), "من نحن", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d9%85%d9%86-%d9%86%d8%ad%d9%86/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/%d9%85%d9%86-%d9%86%d8%ad%d9%86/"});
                     })}
                     {/*About Farmasi*/}
                     {navItem(require("./assets/icon_about_us.png"), "حول فارماسي", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b9%d9%86-%d9%81%d8%a7%d8%b1%d8%b3%d9%8a/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/%d8%b9%d9%86-%d9%81%d8%a7%d8%b1%d8%b3%d9%8a/"});
                     })}
                     {/*Company's policy*/}
                     {navItem(require("./assets/icon_company_terms_and_conditions.png"), "سياسة الشركة", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
                     })}
                     {/*Privacy policy*/}
                     {navItem(require("./assets/icon_company_insurance_policy.png"), "سياسة الخصوصية", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9/"});
                     })}
                     {/*Call Us*/}
                     {navItem(require("./assets/icon_operator.png"), "اتصل بنا", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/%d8%a7%d8%aa%d8%b5%d9%84-%d8%a8%d9%86%d8%a7/"});
                     })}
                     {/*Terms & Conditions*/}
                     {/*navItem(require("./assets/icon_terms_conditions.png"), "البنود و الظروف", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/%d8%b3%d9%8a%d8%a7%d8%b3%d8%a9-%d8%a7%d9%84%d8%a5%d8%b1%d8%ac%d8%a7%d8%b9-2/"});
                     })*/}
                     {/*App info*/}
                     {/*navItem(require("./assets/icon_info.png"), "معلومات التطبيق", e => {
@@ -123,10 +123,10 @@ const NavigationView = (props) => {
                     })*/}
                     {/*Login*/}
                     {props.userDisplayName ? null : navItem(require("./assets/icon_login.png"), "تسجيل الدخول", e => {
-                        props.navigation.navigate("WebView", {url: "https://michaelq53.sg-host.com/?login=true&back=home&page="+Date.now()});
+                        props.navigation.navigate("WebView", {url: "https://farmasiapp.com/?login=true&back=home&page="+Date.now()});
                     }, e => {
                         props.navigation.navigate("WebView", {
-                            url: "https://michaelq53.sg-host.com/wp-admin",
+                            url: "https://farmasiapp.com/wp-admin",
                             fromCheckout: true
                         });
                     })}

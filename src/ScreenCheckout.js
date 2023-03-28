@@ -13,16 +13,10 @@ const ScreenCheckout = (props) => {
     const userID = props.userID;
     const userEmail = props.userEmail;
 
-    if (!userID) {
-        props.nav.navigate("WebView", {
-            url: "https://michaelq53.sg-host.com/?login=true&back=home&page="+Date.now(),
-            fromCheckout: true
-        });
-        return null;
-    }
+    
 
     const WooCommerce = new WooCommerceAPI({
-        url: 'https://michaelq53.sg-host.com/', // Your store URL
+        url: 'https://farmasiapp.com/', // Your store URL
         ssl: true,
         consumerKey: 'ck_fca0b5560e3e43f7446a4f0925b17b9ce849796e', // Your consumer secret
         consumerSecret: 'cs_51b23a671cd0cba5c66e47ea81caae285262d512', // Your consumer secret
@@ -115,7 +109,7 @@ const ScreenCheckout = (props) => {
     const [billing_cities, setBilling_cities] = useState(billingstatesfilter[0].states);
 
 
-    // props.nav.navigate("CheckoutScreen",{url: "https://michaelq53.sg-host.com/?to_cart_react_native="+res});
+    // props.nav.navigate("CheckoutScreen",{url: "https://farmasiapp.com/?to_cart_react_native="+res});
 
     return (
         <View>

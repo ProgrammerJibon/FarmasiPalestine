@@ -48,13 +48,13 @@ const App = () => {
     // const scaleValue = useRef(new Animated.Value(1)).current;
     // const embValue = 0.80;
     const netInfo = useNetInfo();
-//https://michaelq53.sg-host.com/checkout/
-//https://michaelq53.sg-host.com/?to_cart_react_native=18644:7,18648:2
+//https://farmasiapp.com/checkout/
+//https://farmasiapp.com/?to_cart_react_native=18644:7,18648:2
 
 
     function syncUser() {
         return new Promise(resolve => {
-            loadJson("https://michaelq53.sg-host.com/?userID=" + Date.now(), null).then(result => {
+            loadJson("https://farmasiapp.com/?userID=" + Date.now(), null).then(result => {
                 if (result) {
                     if (result.data) {
                         if (result.data.display_name) {
@@ -199,10 +199,10 @@ const App = () => {
                 }, 500)
                 once2 = true;
             } else {
-                if (netInfo.isInternetReachable) {
+                if (netInfo.isInternetReachable || netInfo.isConnected) {
                     reloadProducts();
                 } else {
-                    alert("Unable to load products\nCheck your Internet Connection");
+                    alert("Unable to load products\nCheck your Internet Connection\n");
                 }
             }
         });
@@ -214,7 +214,7 @@ const App = () => {
                 setCategoriesFromDatabase(result);
                 setCategoriesFromDatabaseLoaded(true);
             } else {
-                if (netInfo.isInternetReachable) {
+                if (netInfo.isInternetReachable || netInfo.isConnected || netInfo.isWifiEnabled) {
                     reloadCategories();
                 } else {
                     alert("Unable to load products\nCheck your Internet Connection");
@@ -263,13 +263,13 @@ const App = () => {
 
 
     const realodAll = () => {
-        if (netInfo.isInternetReachable) {
+        if (netInfo.isInternetReachable || netInfo.isConnected) {
             loadDatabase();
             loadList();
             reloadCategories();
             reloadProducts();
         } else {
-            alert("أنت غير متصل بالإنترنت");// Your not connected over internet
+            alert("أنت غير متصل بالإنترنت"); //You're not connected over internet
         }
     }
 
@@ -455,7 +455,7 @@ const App = () => {
                                                       window={window}/>}
                         </Stack.Screen>
                         <Stack.Screen name="ScreenCartList">
-                            {props => <ScreenCartList props={props} nav={RootNavigation} deleteFromList={deleteFromList}
+                            {props => <ScreenCartList props={props} userID={userID} nav={RootNavigation} deleteFromList={deleteFromList}
                                                       addToList={addToList} allList={listDatabase}
                                                       products={productsFromDatabase} styles={styles} defines={defines}
                                                       window={window}/>}

@@ -33,6 +33,8 @@ const BrowserWebView = (props) => {
     const [loading, setLoading] = useState(false);
 
 
+
+
     const webViewGOBack = () => {
         if (webViewCanGoBack) {
             webView.goBack();
@@ -46,26 +48,24 @@ const BrowserWebView = (props) => {
     const funReSync = e => {
         let im = Date.now();
         setLoading(true)
-        console.log(im, 1)
         if (params.fromCheckout) {
-            console.log(im, 2)
             props.syncUser().then(id => {
-                console.log(im, 3)
                 if (id) {
-                    console.log(im, 4)
                     setChanginView(true);
+                    params.url = "about:blank";
                     loadJson(apiBinder("wp-json/wc/v3/customers/" + id)).then(res => {
-                        console.log(im, 5)
                         if (res) {
                             setLoading(true);
                             props.setAddresses(res);
-                            props.navigation.navigate("CheckoutScreen");
+                            setTimeout(()=>{
+                                props.navigation.navigate("CheckoutScreen");
+                                setChanginView(false);
+                            }, 3000);
                         } else {
                             setLoading(false)
                         }
                     })
                 } else {
-                    console.log(im, 6)
                     if (changinView){
                         props.navigation.navigate("ScreenCartList");
                     }else{
@@ -108,13 +108,17 @@ const BrowserWebView = (props) => {
                 ref={setWebView}
                 onNavigationStateChange={(e) => {
                     console.log(e.url)
-                    if (e.url == "https://michaelq53.sg-host.com/") {
+                    if (e.url == "https://farmasiapp.com/") {
                         setChanginView(true);
                         if (params.fromCheckout) {
                             // props.navigation.navigate("ScreenCartList");
                         } else {
                             props.navigation.navigate("Home");
                         }
+                    }else if (params.url === "about:blank"){
+                        setChanginView(true);
+                    }else{
+                        setChanginView(false);
                     }
                     if (params.fromCheckout){
                         setLoading(false);
