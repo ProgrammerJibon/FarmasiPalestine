@@ -86,17 +86,19 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
                 color: 'white',
                 fontWeight: 'bold'
             }}>-{Math.round(100 - (product.price * 100) / (product.regular_price))}%</Text></View> : null}
-            <Image style={{
-                width: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
-                height: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
-                overflow: 'hidden'
-            }}
-                   onError={error => {
-                       alert("Loading Image error: "+error.nativeEvent.error);
-                   }}
-                   source={{
-                       uri: imageSrc
-                   }}/>
+            
+                <Image alt={"Unstable Internet"} style={{
+                    width: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
+                    height: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
+                    overflow: 'hidden'
+                }}
+                                 onError={error => {
+                                     alert("Loading Image error: "+error.nativeEvent.error);
+                                 }}
+                                 source={{
+                                     uri: imageSrc
+                                 }}/>
+
             <Text style={{
                 maxWidth: '100%',
                 color: "gray",

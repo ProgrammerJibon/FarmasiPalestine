@@ -13,7 +13,7 @@ const ScreenCheckout = (props) => {
     const userID = props.userID;
     const userEmail = props.userEmail;
 
-    
+
 
     const WooCommerce = new WooCommerceAPI({
         url: 'https://farmasiapp.com/', // Your store URL
@@ -103,7 +103,8 @@ const ScreenCheckout = (props) => {
     const [city, setCity] = useState(billing.city ? billing.city : 'الجفتلك');
     const [phone, setPhone] = useState(billing.phone ? billing.phone : "");
     const [step, setStep] = useState(1);
-    const [shippingCharge, setShippingCharge] = useState(15);
+    // change your shipping charge here
+    const [shippingCharge, setShippingCharge] = useState(20);
 
     let billingstatesfilter = billing_states.filter(value => value.id == state);
     const [billing_cities, setBilling_cities] = useState(billingstatesfilter[0].states);
@@ -512,8 +513,8 @@ const ScreenCheckout = (props) => {
                             onPress={e => {
                                 const data = {
                                     payment_method: "cod",
-                                    payment_method_title: "Cash on delivery",
-                                    set_paid: false,
+                                    payment_method_title: "Cash on delivery<br> (Unpaid)",
+                                    set_paid: true,
                                     customer_id: userID,
                                     billing: {
                                         first_name: first_name,

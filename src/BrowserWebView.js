@@ -30,7 +30,6 @@ const BrowserWebView = (props) => {
     const [webViewCanGoBack, setWebViewCanGoBack] = useState(false);
     const [changinView, setChanginView] = useState(false);
     // const [link, setLink] = useState(params.url);
-    const [loading, setLoading] = useState(false);
 
 
 
@@ -46,37 +45,30 @@ const BrowserWebView = (props) => {
         return true;
     }
     const funReSync = e => {
-        let im = Date.now();
-        setLoading(true)
-        if (params.fromCheckout) {
-            props.syncUser().then(id => {
-                if (id) {
-                    setChanginView(true);
-                    params.url = "about:blank";
-                    loadJson(apiBinder("wp-json/wc/v3/customers/" + id)).then(res => {
-                        if (res) {
-                            setLoading(true);
-                            props.setAddresses(res);
-                            setTimeout(()=>{
+        props.syncUser().then(id => {
+            if (id) {
+                setChanginView(true);
+                loadJson(apiBinder("wp-json/wc/v3/customers/" + id)).then(res => {
+                    if (res) {
+                        props.setAddresses(res);
+                        setTimeout(()=>{
+                            if(params.fromCheckout){
                                 props.navigation.navigate("CheckoutScreen");
-                                setChanginView(false);
-                            }, 3000);
-                        } else {
-                            setLoading(false)
-                        }
-                    })
-                } else {
-                    if (changinView){
-                        props.navigation.navigate("ScreenCartList");
-                    }else{
-                        setLoading(false)
+                            }else{
+                                props.navigation.navigate("Home");
+                            }
+                            setChanginView(false);
+                        }, 3000);
+                    } else {
+                        alert("Invalid Response From Server!");
+                        props.navigation.navigate("Home");
                     }
-                }
-            })
-        }
-    }
-    if (!loading) {
-        funReSync();
+                })
+            } else {
+                alert("Invalid Response From Server!");
+                props.navigation.navigate("Home");
+            }
+        });
     }
 
 
@@ -107,7 +99,7 @@ const BrowserWebView = (props) => {
             <WebView
                 ref={setWebView}
                 onNavigationStateChange={(e) => {
-                    console.log(e.url)
+                    console.log(e.url);
                     if (e.url == "https://farmasiapp.com/") {
                         setChanginView(true);
                         if (params.fromCheckout) {
@@ -115,13 +107,11 @@ const BrowserWebView = (props) => {
                         } else {
                             props.navigation.navigate("Home");
                         }
-                    }else if (params.url === "about:blank"){
+                    }else if (params.url === "about:blank"||e.url === "about:blank"){
                         setChanginView(true);
+                        funReSync();
                     }else{
                         setChanginView(false);
-                    }
-                    if (params.fromCheckout){
-                        setLoading(false);
                     }
                     setWebViewCanGoBack(e.canGoBack);
                 }}
