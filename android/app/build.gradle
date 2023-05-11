@@ -98,8 +98,8 @@ android {
         applicationId "io.jibon.apps.FarmasiPalestine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 60
-        versionName "2.0.9"
+        versionCode 65
+        versionName "2.9.1"
     }
 
     splits {
