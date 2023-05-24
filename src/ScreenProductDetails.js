@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
-import {FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
-import {showProductsByCategories} from "./Styles";
+import React, { useRef, useState } from "react";
+import { FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { showProductsByCategories } from "./Styles";
 import RenderHTML from "react-native-render-html";
 import Toast from "react-native-toast-message";
 

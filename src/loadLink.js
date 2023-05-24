@@ -1,7 +1,7 @@
-import React from 'react';
-import {ScrollView} from "react-native";
+import React from "react";
+import { ScrollView } from "react-native";
 import RenderHTML from "react-native-render-html";
-import DeviceInfo from 'react-native-device-info';
+import DeviceInfo from "react-native-device-info";
 
 const LoadLink = (props) => {
     /*

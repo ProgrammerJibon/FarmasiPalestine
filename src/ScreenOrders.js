@@ -1,14 +1,13 @@
-import React from 'react';
-import {View} from "react-native";
+import React from "react";
+import { View } from "react-native";
 import loadJson from "./loadJson";
-import {apiBinder} from "./Styles";
+import { apiBinder } from "./Styles";
 
 let once = true;
 const ScreenOrders = (props) => {
     const styles = props.styles;
     const defines = props.defines;
     const window = props.window;
-
 
     if (once) {
         once = false;

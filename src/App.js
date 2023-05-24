@@ -1,14 +1,14 @@
-import React, {useMemo, useState, useRef} from 'react';
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {NavigationContainer} from "@react-navigation/native";
+import React, { useMemo, useRef, useState } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
 import ScreenHome from "./ScreenHome";
 import NavigationView from "./NavigationView";
-import {apiBinder, defines, styles, window} from "./Styles";
-import {Image, SafeAreaView, StatusBar, Animated, Text, TouchableOpacity, View} from "react-native";
+import { apiBinder, defines, styles, window } from "./Styles";
+import { Animated, Image, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import * as database from "./database";
-import * as RootNavigation from './RootNavigation';
+import * as RootNavigation from "./RootNavigation";
 import loadJson from "./loadJson";
-import {useNetInfo} from "@react-native-community/netinfo";
+import { useNetInfo } from "@react-native-community/netinfo";
 import ScreenProductDetails from "./ScreenProductDetails";
 import BrowserWebView from "./BrowserWebView";
 import ScreenAllCategories from "./ScreenAllCategories";
@@ -16,11 +16,12 @@ import ScreenProductByCategories from "./ScreenProductByCategories";
 import ScreenSearch from "./ScreenSearch";
 import ScreenWishlist from "./ScreenWishlist";
 import ScreenCartList from "./ScreenCartList";
-import {TouchableRipple} from "react-native-paper";
+import { TouchableRipple } from "react-native-paper";
 import LoadLink from "./loadLink";
 import Toast from "react-native-toast-message";
 import ScreenCheckout from "./ScreenCheckout";
 import ScreenOrders from "./ScreenOrders";
+
 
 let once = true;
 let once2 = true;

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FlatList, Image, Text, TextInput, TouchableOpacity, View} from "react-native";
+import React, { useState } from "react";
+import { FlatList, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const ScreenWishlist = (props) => {
     const styles = props.styles;

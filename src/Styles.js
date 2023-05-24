@@ -1,8 +1,7 @@
 'use strict';
-import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import Toast from "react-native-toast-message";
-
 
 const window = Dimensions.get('window');
 //https://farmasiapp.com/wp-json/wc/v3/products?per_page=100&lang=en&consumer_key=ck_fca0b5560e3e43f7446a4f0925b17b9ce849796e&consumer_secret=cs_51b23a671cd0cba5c66e47ea81caae285262d512

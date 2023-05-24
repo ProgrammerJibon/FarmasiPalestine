@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
-import {FlatList, Image, RefreshControl, Text, TouchableHighlight, TouchableOpacity, View} from "react-native";
-import {showProductsByCategories} from "./Styles";
+import React, { useRef, useState } from "react";
+import { FlatList, Image, RefreshControl, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
+import { showProductsByCategories } from "./Styles";
 
 let stopSlider = false;
 let activeImage = 0;
@@ -9,6 +9,7 @@ const ScreenHome = (props) => {
     const styles = props.styles;
     const defines = props.defines;
     const window = props.window;
+
 
     const [refreshing, setRefreshing] = useState(false);
     const views = ['header', 'welcome', 'categories', 'products'];

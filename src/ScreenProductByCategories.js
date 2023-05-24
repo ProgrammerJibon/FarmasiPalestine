@@ -1,12 +1,13 @@
-import React from 'react';
-import {FlatList, Text, View} from "react-native";
-import {showProductsByCategories} from "./Styles";
+import React from "react";
+import { FlatList, Text, View } from "react-native";
+import { showProductsByCategories } from "./Styles";
 
 const ScreenProductByCategories = (props) => {
     let categoryID = props.props.route.params.categoryID;
     const styles = props.styles;
     const defines = props.defines;
     const window = props.window;
+
     let thisCategory = props.categories.filter(item => item.id == categoryID);
 
     let thisCatProducts = props.products.filter(o => o.categories_id_0 == categoryID || o.categories_id_1 == categoryID || o.categories_id_2 == categoryID || categoryID == -1);

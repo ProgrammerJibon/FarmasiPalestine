@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {FlatList, Text, TextInput, View} from "react-native";
-import {showProductsByCategories} from "./Styles";
+import React, { useState } from "react";
+import { FlatList, Text, TextInput, View } from "react-native";
+import { showProductsByCategories } from "./Styles";
 
 const ScreenSearch = (props) => {
     const [search, setSearch] = useState("");

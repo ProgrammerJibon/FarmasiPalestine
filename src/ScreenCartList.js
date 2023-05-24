@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FlatList, Image, Text, TextInput, TouchableOpacity, View} from "react-native";
+import React, { useState } from "react";
+import { FlatList, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const ScreenCartList = (props) => {
     const styles = props.styles;
@@ -200,6 +200,7 @@ const ScreenCartList = (props) => {
                 return true;
             }
         });
+
         if (productOfCarts.length > 0) {
             props.nav.navigate("CheckoutScreen", {time: Date.now()});
             /*if (!userID) {

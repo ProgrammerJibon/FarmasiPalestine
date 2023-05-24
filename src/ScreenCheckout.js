@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import {FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
-import SelectDropdown from 'react-native-select-dropdown'
+import React, { useState } from "react";
+import { FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import SelectDropdown from "react-native-select-dropdown";
 import Toast from "react-native-toast-message";
 import WooCommerceAPI from "react-native-woocommerce-api";
-import * as Progress from 'react-native-progress';
-import loadJson from "./loadJson";
+import * as Progress from "react-native-progress";
 
 
 const ScreenCheckout = (props) => {
@@ -751,6 +750,7 @@ const ScreenCheckout = (props) => {
                             }
 
                         }}
+
                         style={[styles.flex, {
                             display: step === 1 ? undefined : 'none',
                             justifyContent: 'center',

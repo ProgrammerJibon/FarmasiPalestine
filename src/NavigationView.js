@@ -1,9 +1,9 @@
-import React from 'react';
-import {BackHandler, Image, Linking, ScrollView, Text, TouchableHighlight, TouchableOpacity, View} from "react-native";
-import {Gravatar} from 'react-native-gravatar';
+import React from "react";
+import { BackHandler, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Gravatar } from "react-native-gravatar";
 import Toast from "react-native-toast-message";
-const RCTNetworking = require('react-native/Libraries/Network/RCTNetworking')
 
+const RCTNetworking = require('react-native/Libraries/Network/RCTNetworking')
 
 const NavigationView = (props) => {
     const styles = props.styles;

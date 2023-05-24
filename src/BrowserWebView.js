@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {WebView} from "react-native-webview";
-import {Bar} from "react-native-progress";
-import {Provider} from "react-native-paper";
-import {apiBinder} from "./Styles";
-import {BackHandler, View} from "react-native";
+import React, { useState } from "react";
+import { WebView } from "react-native-webview";
+import { Bar } from "react-native-progress";
+import { Provider } from "react-native-paper";
+import { apiBinder } from "./Styles";
+import { BackHandler, View } from "react-native";
 import loadJson from "./loadJson";
 
 

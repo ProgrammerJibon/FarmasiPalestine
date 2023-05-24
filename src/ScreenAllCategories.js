@@ -1,5 +1,6 @@
-import React from 'react';
-import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
+import React from "react";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+
 
 const ScreenAllCategories = (props) => {
     const styles = props.styles;

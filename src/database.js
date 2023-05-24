@@ -1,4 +1,4 @@
-import {openDatabase} from 'react-native-sqlite-storage';
+import { openDatabase } from "react-native-sqlite-storage";
 
 const db = openDatabase({
     name: "rn_sqlite"
@@ -21,6 +21,7 @@ export const createTable = (tableName, tableColumns) => {
         });
     });
 };
+
 // TODO extras: (name) VALUES ('value')
 export const addToTable = (tableName, extras) => {
     return new Promise(function (resolve, reject) {

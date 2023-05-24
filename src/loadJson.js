@@ -25,6 +25,7 @@ const loadJson = (url, data) => {
         }
     });
 }
+
 const loadLink = (url, data) => {
     // TODO loadJson(url, data).then(result=>{console.log(result)})
     return new Promise(function (resolve, reject) {
