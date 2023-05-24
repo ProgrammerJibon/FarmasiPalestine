@@ -4,16 +4,25 @@ import SelectDropdown from 'react-native-select-dropdown'
 import Toast from "react-native-toast-message";
 import WooCommerceAPI from "react-native-woocommerce-api";
 import * as Progress from 'react-native-progress';
+import loadJson from "./loadJson";
 
 
 const ScreenCheckout = (props) => {
     const styles = props.styles;
     const defines = props.defines;
     const window = props.window;
-    const userID = props.userID;
-    const userEmail = props.userEmail;
+  const [userID, setUserID] = useState(props.userID);
+  const userEmail = props.userEmail;
 
+  function generateRandom4DigitNumber() {
+    // Generate a random number between 0 and 9999
+    let randomNumber = Math.floor(Math.random() * 10000);
 
+    // Pad the number with leading zeros if necessary
+    let paddedNumber = randomNumber.toString().padStart(4, '0');
+
+    return paddedNumber;
+  }
 
     const WooCommerce = new WooCommerceAPI({
         url: 'https://farmasiapp.com/', // Your store URL
@@ -24,6 +33,45 @@ const ScreenCheckout = (props) => {
         version: 'wc/v3', // WooCommerce WP REST API version
         queryStringAuth: true
     });
+
+
+
+  const registerUserWithPhone = async (phone, password) => {
+    try {
+      let userIdx = null;
+      let mesRes = "";
+      const response = await WooCommerce.post('customers', {
+        username: phone,
+        email: phone+"@farmasiapp.com",
+        password: password,
+        billing: {
+          phone: phone
+        }
+      });
+
+      if(response.id ){
+        if(response.id){
+          userIdx = response.id;
+        }
+      }
+
+      if(response){
+        if (response.message){
+          mesRes= response.message;
+        }
+      }
+
+      return {
+        userId: userIdx,
+        message: mesRes
+      };
+    } catch (error) {
+      return {
+        userId: userIdx,
+        message: 'Failed to register user: ' + error.message,
+      };
+    }
+  };
 
 
     let allListRes = [];
@@ -92,19 +140,30 @@ const ScreenCheckout = (props) => {
             states: ['أودلا', 'أوصرينا', 'إجنسنيا', 'الباذان', 'الساوية', 'العقربانية', 'اللبن الشرقية', 'الناقورة', 'النصارية', 'برقة', 'بزاريا', 'بورين', 'بيت إمرين', 'بيت إيبا', 'بيت حسن', 'بيت دجن', 'بيت فوريك', 'بيت وزن', 'بيتا', 'تل', 'تلفيت', 'جالود', 'جماعين', 'جنيد', 'جوريش', 'حوارة', 'خربة عطية', 'دوما', 'دير الحطب', 'دير شرف', 'رفيديا', 'روجيب', 'زعترة ', 'زواتا', 'زيتا جماعين', 'سالم', 'سبسطية', 'عصيرة الشمالية', 'عصيرة القبلية', 'عقربا', 'عمورية', 'عورتا', 'عوريف', 'عين شبلي', 'عينبوس', 'فروش بيت دجن', 'قبلان', 'قريوت', 'قصرة', 'كفر قليل', 'لوزة', 'مادما', 'مجدل بني فاضل', 'نصف جبيل', 'ياصيد', 'يانون', 'يتما',]
         },
     ]
-    const billing = props.userAddresses.billing;
+    const billing = props.userAddresses?props.userAddresses.billing:null;
     if (!billing){
-        return null;
+        // return null;
     }
-    const [first_name, setFirst_name] = useState(billing.first_name? billing.first_name : "");
-    const [last_name, setLast_name] = useState(billing.last_name ? billing.last_name : "");
-    const [streetName, setStreetName] = useState(billing.address_1 ? billing.address_1 : "");
-    const [state, setState] = useState(billing.state ? billing.state : "PS01");
-    const [city, setCity] = useState(billing.city ? billing.city : 'الجفتلك');
-    const [phone, setPhone] = useState(billing.phone ? billing.phone : "");
+    const [first_name, setFirst_name] = useState(billing? billing.first_name : "");
+    const [last_name, setLast_name] = useState(billing ? billing.last_name : "");
+    const [streetName, setStreetName] = useState(billing ? billing.address_1 : "");
+    const [state, setState] = useState(billing ? billing.state : "PS01");
+    const [city, setCity] = useState(billing ? billing.city : 'الجفتلك');
+    const [phone, setPhone] = useState(billing ? billing.phone : "");
     const [step, setStep] = useState(1);
-    // change your shipping charge here
+    const [password, setPassword] = useState(generateRandom4DigitNumber());
+    const [token, setToken] = useState(null);
+  // change your shipping charge here
     const [shippingCharge, setShippingCharge] = useState(20);
+    if(inTotal < 150){
+        if (shippingCharge == 0){
+          setShippingCharge(20);
+        }
+    }else {
+        if(shippingCharge != 0){
+          setShippingCharge(0);
+        }
+    }
 
     let billingstatesfilter = billing_states.filter(value => value.id == state);
     const [billing_cities, setBilling_cities] = useState(billingstatesfilter[0].states);
@@ -511,6 +570,8 @@ const ScreenCheckout = (props) => {
                     <TouchableOpacity>
                         <Text
                             onPress={e => {
+                              // alert(phone+"\n"+password+"\n"+token);
+                              // return false;
                                 const data = {
                                     payment_method: "cod",
                                     payment_method_title: "Cash on delivery<br> (Unpaid)",
@@ -548,7 +609,11 @@ const ScreenCheckout = (props) => {
                                     ]
                                 };
                                 setStep(3);
-                                WooCommerce.post("orders", data)
+                                WooCommerce.post("orders", data, {
+                                  headers: {
+                                    Accept: 'text/plain',
+                                  }
+                                })
                                     .then((response) => {
                                         if (response.id) {
                                             const dataxxx = {
@@ -607,14 +672,29 @@ const ScreenCheckout = (props) => {
                                         }
                                     })
                                     .catch(error => {
+                                      if (token){
+                                        allListRes.forEach(item => {
+                                          props.deleteFromList(item.id)
+                                        });
+                                        Toast.show({
+                                          type: 'success',
+                                          //Order has been successfully placed.
+                                          text2: 'تم تقديم الطلب بنجاح.',
+                                          topOffset: 70,
+                                        });
+
+                                        props.nav.navigate("Home");
+                                      }else{
                                         setStep(2);
                                         Toast.show({
-                                            type: 'error',
-                                            text1: 'Error!',
-                                            //Invalid or data missing in the required field(s)
-                                            text2: 'غير صالحة أو بيانات مفقودة في الحقول المطلوبة',
-                                            topOffset: 70,
+                                          type: 'info',
+                                          text1: 'Warning!',
+                                          //Invalid or data missing in the required field(s)
+                                          text2: 'غير صالحة أو بيانات مفقودة في الحقول المطلوبة',
+                                          topOffset: 70,
                                         })
+                                      }
+
                                     })
                             }}
                             style={{
@@ -641,7 +721,25 @@ const ScreenCheckout = (props) => {
                     <TouchableOpacity
                         onPress={() => {
                             if (!(first_name.length <= 3 || last_name.length <= 3 || streetName.length <= 3 || city.length === 0 || state.length === 0 || phone.length <= 8)) {
+                              if(userID != null){
                                 setStep(2);
+                              }else{
+                                setStep(3);
+                                registerUserWithPhone(phone, password)
+                                  .then(response => {
+                                    if(response.userId){
+                                      setToken(true);
+                                      setStep(2);
+                                    }else{
+                                      setStep(1);
+                                      alert(response.message);
+                                    }
+                                  })
+                                  .catch(error => {
+                                    console.error('Error:', error);
+                                  });
+                              }
+
                             } else {
                                 Toast.show({
                                     type: 'error',

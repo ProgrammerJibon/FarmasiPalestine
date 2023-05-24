@@ -9,6 +9,7 @@ const window = Dimensions.get('window');
 //https://farmasi.ps/wp-json/wc/v3/products?per_page=100&lang=en&consumer_key=ck_a4f28b66cf8d0649a042bbdac69ce714bf2f0aaf&consumer_secret=cs_ddf7e431906f27526effa838d6d9e81c06c68800
 // https://farmasiapp.com/wp-json/wc/v3/customers/4
 // /wp-json/wc/v3/orders/?customer=4
+//https://farmasiapp.com/wp-json/digits/v1/login_user?user=85850404887@farmasiapp.com&password=8237&consumer_key=ck_fca0b5560e3e43f7446a4f0925b17b9ce849796e&consumer_secret=cs_51b23a671cd0cba5c66e47ea81caae285262d512
 const defines = {
     screenWidth: window.width,
     screenHeight: window.height,
@@ -28,6 +29,7 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
         thisOnList = allLists.filter(x => product.id == x.id && x.type == 'cart');
     }
     let imageSrc = product.images_src;
+    imageSrc = imageSrc.replace(/\r?\n|\r/g, '');
     // let imageSrcSplit = product.images_src.split(".");
     // imageSrcSplit.forEach((val, index)=>{
     //     if (index === imageSrcSplit.length-1){
@@ -86,7 +88,7 @@ const showProductsByCategories = (product, nav, allProducts, mainViewRef, setQua
                 color: 'white',
                 fontWeight: 'bold'
             }}>-{Math.round(100 - (product.price * 100) / (product.regular_price))}%</Text></View> : null}
-            
+
                 <Image alt={"Unstable Internet"} style={{
                     width: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
                     height: (window.width / (product.numColumns ? product.numColumns : 3)) - 24,
