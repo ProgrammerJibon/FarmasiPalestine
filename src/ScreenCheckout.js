@@ -727,11 +727,13 @@ const ScreenCheckout = (props) => {
                                 registerUserWithPhone(phone, password)
                                   .then(response => {
                                     if(response.userId){
+                                      setUserID(response.userId);
                                       setToken(true);
                                       setStep(2);
-                                    }else{
-                                      setStep(1);
-                                      alert(response.message);
+                                    }else {
+                                      setUserID("0");
+                                      setToken(true);
+                                      setStep(2);
                                     }
                                   })
                                   .catch(error => {
