@@ -557,14 +557,15 @@ const ScreenCheckout = (props) => {
                                     textAlign: 'right'
                                 }}>₪{inTotal + shippingCharge}.00</Text>
                             </View>
-                            <View>
-                                <Text style={{color: 'black', fontWeight: 'bold'}}>
-                                    {/*Total*/}
-                                    {"المبلغ الإجمالي"}
-                                </Text>
-                            </View>
+                          <View>
+                            <Text style={{ color: "black", fontWeight: "bold" }}>
+                              {/*Total*/}
+                              {"المبلغ الإجمالي"}
+                            </Text>
+                          </View>
                         </View>
                     </View>
+                  <Text></Text>
                     {/*TODO place order*/}
                     <TouchableOpacity>
                         <Text

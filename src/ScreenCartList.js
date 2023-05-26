@@ -202,15 +202,16 @@ const ScreenCartList = (props) => {
         });
 
         if (productOfCarts.length > 0) {
-            props.nav.navigate("CheckoutScreen", {time: Date.now()});
-            /*if (!userID) {
-                props.nav.navigate("WebView", {
-                    url: "https://farmasiapp.com/?login=true&back=home&page="+Date.now(),
-                    fromCheckout: true
-                });
-            }else{
-                props.nav.navigate("CheckoutScreen", {time: Date.now()});
-            }*/
+          // props.nav.navigate("CheckoutScreen", {time: Date.now()});
+          /**/
+          if (!userID) {
+            props.nav.navigate("WebView", {
+              url: "https://farmasiapp.com/?login=true&back=home&page=" + Date.now(),
+              fromCheckout: true,
+            });
+          } else {
+            props.nav.navigate("CheckoutScreen", { time: Date.now() });
+          }/**/
         } else {
             Toast.show({
                 type: 'error',

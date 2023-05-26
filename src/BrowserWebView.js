@@ -103,7 +103,7 @@ const BrowserWebView = (props) => {
                     if (e.url == "https://farmasiapp.com/") {
                         setChanginView(true);
                         if (params.fromCheckout) {
-                            // props.navigation.navigate("ScreenCartList");
+                            props.navigation.navigate("ScreenCartList");
                         } else {
                             props.navigation.navigate("Home");
                         }
@@ -117,16 +117,18 @@ const BrowserWebView = (props) => {
                 }}
                 userAgent={"Android"}
                 onScroll={event => {
-                    webView.requestFocus();
+                  webView.requestFocus();
                 }}
-                source={{uri: params.url}}
-                style={[styles.wevView,]}
+                source={{ uri: params.url }}
+                style={[styles.wevView]}
                 onError={(e) => {
-                    e.preventDefault();
+                  e.preventDefault();
                 }}
                 onLoadProgress={e => {
-                    setProgress(e.nativeEvent.progress);
+                  setProgress(e.nativeEvent.progress);
                 }}
+                sharedCookiesEnabled={true}
+                thirdPartyCookiesEnabled={true}
             ></WebView>
         </Provider>
     );
