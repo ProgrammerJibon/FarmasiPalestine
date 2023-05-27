@@ -4,14 +4,14 @@ import RenderHTML from "react-native-render-html";
 import DeviceInfo from "react-native-device-info";
 
 const LoadLink = (props) => {
-    /*
-    * @author MD. Jibon Howlader
-    * @farmasipalestine version: 2.0
-    * */
-    const styles = props.styles;
-    const defines = props.defines;
-    const window = props.window;
-    const html = `
+  /*
+  * @author MD. Jibon Howlader
+  * @farmasipalestine version: 2.0
+  * */
+  const styles = props.styles;
+  const defines = props.defines;
+  const window = props.window;
+  const html = `
         <br>
         <br>
         <h2>About</h2>
@@ -29,45 +29,45 @@ const LoadLink = (props) => {
         <h3>Email: <a href="mailto:mail@jibon.io">mail@jibon.io</a></h3>
         <h3>Contact: <a href="https://www.freelancer.com/u/ProgrammerJibon">Freelancer</a>, <a href="https://www.instagram.com/programmerjibon/">Instagram</a></h3>
     `;
-    return (
-        <ScrollView>
-            <RenderHTML contentWidth={window.width}
-                        enableExperimentalRtl={true}
-                        baseStyle={{
-                            color: 'black',
-                            fontWeight: 'bold'
-                        }}
-                        listStyleType='disc'
-                        tagsStyles={{
-                            ol: {
-                                listStyleType: 'none',
-                            },
-                            ul: {
-                                listStyleType: 'none',
-                            },
-                            li: {
-                                width: window.width - 64,
-                                color: 'gray'
-                            },
-                            h1: {fontSize: "24px", margin: 8},
-                            h2: {
-                                fontSize: "16px",
-                                margin: 8,
-                                color: defines.backDarkPrimary,
-                                textDecorationLine: 'none'
-                            },
-                            h3: {fontSize: "14px", margin: 8},
-                            h4: {fontSize: "12px", margin: 8},
-                            h5: {fontSize: "10px", margin: 8},
-                            h6: {fontSize: "8px", margin: 8},
-                            div: {margin: 8},
-                            a: {color: defines.backLightPrimary,}
-                        }}
-                        source={{
-                            html: html
-                        }}/>
-        </ScrollView>
-    );
+  return (
+    <ScrollView>
+      <RenderHTML contentWidth={window.width}
+                  enableExperimentalRtl={true}
+                  baseStyle={{
+                    color: "black",
+                    fontWeight: "bold",
+                  }}
+                  listStyleType="disc"
+                  tagsStyles={{
+                    ol: {
+                      listStyleType: "none",
+                    },
+                    ul: {
+                      listStyleType: "none",
+                    },
+                    li: {
+                      width: window.width - 64,
+                      color: "gray",
+                    },
+                    h1: { fontSize: "24px", margin: 8 },
+                    h2: {
+                      fontSize: "16px",
+                      margin: 8,
+                      color: defines.backDarkPrimary,
+                      textDecorationLine: "none",
+                    },
+                    h3: { fontSize: "14px", margin: 8 },
+                    h4: { fontSize: "12px", margin: 8 },
+                    h5: { fontSize: "10px", margin: 8 },
+                    h6: { fontSize: "8px", margin: 8 },
+                    div: { margin: 8 },
+                    a: { color: defines.backLightPrimary },
+                  }}
+                  source={{
+                    html: html,
+                  }} />
+    </ScrollView>
+  );
 };
 
 export default LoadLink;
