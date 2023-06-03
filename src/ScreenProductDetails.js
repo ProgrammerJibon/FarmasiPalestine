@@ -35,6 +35,8 @@ const ScreenProductDetails = (props) => {
     return showProductsByCategories(item.item, props.props.navigation, props.products, mainViewRef, setQuantityCart, true, props.addToList, props.allList);
   };
 
+  let imageSrc = product.images_src.replace(/\r?\n|\r/g, "");
+
   return (<View style={{ flex: 1 }}>
     <TouchableOpacity
       style={{
@@ -93,8 +95,11 @@ const ScreenProductDetails = (props) => {
         height: window.width,
         overflow: "hidden",
       }}
+             onError={error => {
+               alert("Loading Image error: " + error.nativeEvent.error);
+             }}
              source={{
-               uri: product.images_src,
+               uri: imageSrc,
              }} />
       <View style={[styles.flex, { justifyContent: "space-between", alignItems: "flex-start" }]}>
         <TouchableOpacity
